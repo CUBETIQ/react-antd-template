@@ -1,23 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from "antd";
+import React from "react";
+import "./App.less";
 
 function App() {
+  const [coms, setComs] = React.useState<any>([]);
+
+  const onCreate = () => {
+    setComs([
+      ...coms,
+      { id: coms.length * Math.random(), text: `New: ${Math.random()}` },
+    ]);
+  };
+
+  const onRemove = (com: any) => {
+    setComs(coms.filter((c: any) => c.id !== com.id));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <>Hello World</>
+        <Button onClick={onCreate} type={"primary"}>
+          Create me
+        </Button>
+        {coms.map((com: any) => (
+          <div key={com.id}>
+            <Button onClick={() => onRemove(com)}>{com.text}</Button>
+          </div>
+        ))}
       </header>
     </div>
   );
