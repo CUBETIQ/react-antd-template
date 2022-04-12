@@ -1,3 +1,4 @@
+import { PlusCircleFilled } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import "./App.less";
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <>Hello World</>
-        <Button onClick={onCreate} type={"primary"}>
+        <Button icon={<PlusCircleFilled />} onClick={onCreate} type={"primary"}>
           Create me
         </Button>
         {coms.map((com: any) => (
